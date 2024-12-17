@@ -1,0 +1,686 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+:root {
+    --heart-size: 30px;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: #121212;
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.intro-prompt {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #121212;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    transition: opacity 0.5s ease;
+}
+
+    .intro-prompt h1 {
+        opacity: 0;
+        margin-bottom: 1.5vw;
+        animation: fadeInUp 0.5s ease 0.4s forwards;
+    }
+
+    .intro-prompt p {
+        font-size: 1.25vw;
+        font-weight: 400;
+        margin-bottom: 30px;
+    }
+
+    .intro-prompt .desc1 {
+        font-size: 1.25vw;
+        font-weight: 400;
+        margin-bottom: 30px;
+        opacity: 0;
+        transition: animation 1s linear;
+        animation: fadeInUp 0.5s ease 0.4s forwards;
+    }
+
+.abs1{
+    height: 40vh;
+    width: fit-content;
+    overflow: hidden;
+    position: fixed;
+    bottom: -10vh;
+    left: -10vw;
+}
+
+.abs2 {
+    height: 40vh;
+    width: fit-content;
+    overflow: hidden;
+    position: fixed;
+    top: -10vh;
+    right: -7vw;
+}
+
+.me {
+    height: 10vh;
+    width: fit-content;
+    overflow: hidden;
+    position: fixed;
+    top: 5vh;
+    left: 5vw;
+}
+
+.phool {
+    height: 50vh;
+    width: fit-content;
+    overflow: hidden;
+    z-index: 2;
+    opacity: 0;
+    border-radius: 20px;
+    position: relative;
+    margin: 20px 10px;
+}
+
+.button {
+    cursor: pointer;
+    border: none;
+    background: #a3923e;
+    color: #fff;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    display: grid;
+    place-content: center;
+    transition: background 300ms, transform 200ms;
+    font-weight: 600;
+}
+
+.button__text {
+    position: absolute;
+    inset: 0;
+    top: 0.15vw;
+    animation: text-rotation 8s linear infinite;
+}
+
+    .button__text span {
+        position: absolute;
+        transform: rotate(calc(15deg * var(--index)));
+        inset: -20px;
+        font-size: 13px;
+    }
+
+
+.button__circle {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    background: #fff;
+    color: #a3923e;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button__icon--copy {
+    position: absolute;
+    transform: translate(-150%, 150%);
+}
+
+.button:hover {
+    background: #000;
+    transform: scale(1.05);
+}
+
+    .button:hover .button__icon {
+        color: #000;
+    }
+
+        .button:hover .button__icon:first-child {
+            transition: transform 0.3s ease-in-out;
+            transform: translate(150%, -150%);
+        }
+
+    .button:hover .button__icon--copy {
+        transition: transform 0.3s ease-in-out 0.1s;
+        transform: translate(0);
+    }
+
+@keyframes text-rotation {
+    to {
+        rotate: 360deg;
+    }
+}
+
+
+.card-container {
+    position: relative;
+    width: 90vw;
+    height: 90vh;
+    perspective: 1000px;
+    display: none;
+}
+
+.card {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: opacity 1s ease;
+    opacity: 0;
+}
+
+    .card.active {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .card h2 {
+        font-size: 60px;
+        margin-bottom: 5vh;
+        opacity: 0;
+        animation-delay: 1s;
+        transform: translateY(20px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .card .head1 {
+        font-family: "Playfair Display", serif;
+        font-optical-sizing: auto;
+        font-weight: 600;
+        font-style: italic;
+        font-size: 5vw;
+        margin-bottom: 5vh;
+        opacity: 0;
+        animation-delay: 1s;
+        transform: translateY(20px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .card p {
+        font-size: 24px;
+        opacity: 0;
+        animation-delay: 1s;
+        transform: translateY(20px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .card .love-count {
+        font-size: 150px;
+        margin: 20px 0;
+        animation-delay: 1s;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .card .break-count {
+        font-size: 150px;
+        font-family: "Lora", serif;
+        font-optical-sizing: auto;
+        font-weight: 500;
+        margin: 20px 0;
+        animation-delay: 1s;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .card .duration-count {
+        font-size: 80px;
+        font-family: "Lora", serif;
+        font-optical-sizing: auto;
+        font-weight: 500;
+        margin: 20px 0;
+        animation-delay: 1s;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .card .slay-count {
+        font-size: 70px;
+        font-family: "Lora", serif;
+        font-optical-sizing: auto;
+        font-weight: 500;
+        margin: 20px 0;
+        animation-delay: 1s;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .card .desc2, .card .desc3 {
+        margin: 20px 0;
+        animation-delay: 1s;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 1.5s ease, transform 0.5s ease;
+    }
+
+
+
+    .card.active h2 {
+        animation: fadeInUp 0.5s ease forwards;
+    }
+
+    .card.active p {
+        animation: fadeInUp 0.5s ease 0.2s forwards;
+    }
+
+    .card.active .love-count {
+        animation: fadeInUp 0.5s ease 0.4s forwards;
+    }
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.love-count {
+    font-family: "Lora", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    margin: 20px 0;
+}
+
+
+.love-count-h {
+    font-size: 72px;
+    font-family: "Lora", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: italic;
+    margin: 20px 10px;
+}
+
+.genre-bubbles {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.stars {
+    width: 100%;
+    height: 110%;
+    display: flex;
+    border-radius: 20px;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.star {
+    position: absolute;
+    z-index: 0;
+    background-color: #ffffff;
+    border-radius: 50%;
+    animation: twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle {
+    0% {
+        opacity: 0.3;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes colour-one{
+    0% {
+        outline: #ad5344 solid 5px;
+    }
+    25% {
+        outline: #ada544 solid 5px;
+    }
+    75% {
+        outline: #54ad44 solid 5px;
+    }
+    100% {
+        outline: #ad5344 solid 5px;
+    }
+}
+
+.container1 {
+    width: 100%;
+    height: 110%;
+    display: flex;
+    border-radius: 20px;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background: #121212; 
+    background: linear-gradient( 135deg, #121212 25%, #1a1a1a 25%, #1a1a1a 50%, #121212 50%, #121212 75%, #1a1a1a 75%, #1a1a1a );
+    background-size: 40px 40px;
+    animation: move 4s linear infinite;
+}
+
+@keyframes move {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: 40px 40px;
+    }
+}
+
+.navigation {
+    position: fixed;
+    bottom: 2vh;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.nav-btn {
+    background-color: rgb(177, 177, 177, 0.05);
+    color: rgb(170 170 170);
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    font-size: 15px;
+    outline: rgb(170 170 170) solid 2px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+    .nav-btn:hover {
+        background-color: rgb(114, 114, 114, 0.50);
+    }
+
+    .nav-btn .prev{
+        opacity: 1;
+    }
+    .nav-btn .next {
+        opacity: 1;
+    }
+
+#card1 {
+    outline: #ad5344 solid 5px;
+    animation: colour-one 2.5s infinite linear;
+}
+
+#card2 {
+    outline: #ffffff solid 5px;
+}
+
+#card3 {
+    outline: #ffffff solid 5px;
+    background: linear-gradient(to bottom, #000000, #704219);
+}
+
+#card4 {
+    outline: #ffffff solid 5px;
+    background: linear-gradient(to top, #000000, #844399);
+}
+
+#card5 {
+    outline: #700f0f solid 5px;
+}
+
+#card6 {
+    outline: #345c9d solid 5px;
+}
+
+h1 {
+    font-family: "Playfair Display", serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: italic;
+    font-size: 5vw;
+}
+
+
+.heart {
+    position: absolute;
+    background-color: rgb(200, 56, 85);
+    display: inline-block;
+    width: var(--heart-size);
+    height: var(--heart-size);
+    z-index: -1;
+    transform: rotate(-45deg);
+    animation: float 6s ease-in-out infinite;
+}
+
+    .heart::before,
+    .heart::after {
+        content: "";
+        background-color: rgb(200, 56, 85);
+        border-radius: 50%;
+        width: var(--heart-size);
+        height: var(--heart-size);
+        position: absolute;
+    }
+
+    .heart::before {
+        top: calc(var(--heart-size) / -2);
+        left: 0;
+    }
+
+    .heart::after {
+        left: calc(var(--heart-size) / 2);
+        top: 0;
+    }
+
+@keyframes float {
+    0%, 100% {
+        transform: rotate(-45deg) translate(0, 0);
+    }
+
+    50% {
+        transform: rotate(-45deg) translate(0, -20px);
+    }
+}
+
+.heart-pattern {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    display: flex;
+    background: linear-gradient(181deg, #ffb8a3, #ff598d);
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.reasonsbtn {
+    font-size: 18px;
+    color: #e1e1e1;
+    font-family: inherit;
+    font-weight: 800;
+    cursor: pointer;
+    position: relative;
+    margin-top: 30px;
+    border: none;
+    background: none;
+    text-transform: uppercase;
+    transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition-duration: 400ms;
+    transition-property: color;
+}
+
+    .reasonsbtn:focus,
+    .reasonsbtn:hover {
+        color: #fff;
+    }
+
+        .reasonsbtn:focus:after,
+        .reasonsbtn:hover:after {
+            width: 100%;
+            left: 0%;
+        }
+
+    .reasonsbtn:after {
+        content: "";
+        pointer-events: none;
+        bottom: -2px;
+        left: 50%;
+        position: absolute;
+        width: 0%;
+        height: 2px;
+        background-color: #fff;
+        transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+        transition-duration: 400ms;
+        transition-property: width, left;
+    }
+
+
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
+/*------------------------------------------------------------------------------------*/
+/*------------------------------------------------------------------------------------*/
+/* FOR MOBILE DEVICES CUZ IM PRETTY SURE SHES GONNA OPEN THIS ON HER PHONE FIRST LMFAO*/
+/*------------------------------------------------------------------------------------*/
+/*------------------------------------------------------------------------------------*/
+
+@media (max-width: 768px) {
+
+    .card h2 {
+        font-size: 40px;
+    }
+    .card .head1 {
+        font-size: 40px;
+    }
+    .card .head2 {
+        font-size: 25px;
+    }
+
+    .card p {
+        font-size: 18px;
+    }
+
+    .card .love-count {
+        font-size: 72px;
+        margin: 20px 0;
+        animation-delay: 1s;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .card .break-count {
+        font-size: 72px;
+        font-family: "Lora", serif;
+        font-optical-sizing: auto;
+        font-weight: 500;
+        margin: 20px 0;
+        animation-delay: 1s;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .card .slay-count {
+        font-size: 30px;
+        font-family: "Lora", serif;
+        font-optical-sizing: auto;
+        font-weight: 500;
+        margin: 20px 0;
+        animation-delay: 1s;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .intro-prompt h1 {
+        margin-bottom: 1.5vw;
+        font-size: 7vh;
+        text-align: center;
+        max-width: 90vw;
+        font-optical-sizing: auto;
+    }
+
+    .intro-prompt p {
+        font-size: 2vh;
+        text-align: center;
+        max-width: 80vw;
+        font-weight: 400;
+        margin-bottom: 40px;
+    }
+
+    .intro-prompt .desc1 {
+        font-size: 1.5vh;
+        font-weight: 400;
+        margin-bottom: 30px;
+        opacity: 0;
+        animation-delay: 1s;
+        animation: fadeInUp 0.5s ease 0.4s forwards;
+    }
+
+    .abs1 {
+        height: 40vh;
+        width: fit-content;
+        overflow: hidden;
+        position: fixed;
+        bottom: -15vh;
+        left: -40vw;
+    }
+
+    .abs2 {
+        height: 40vh;
+        width: fit-content;
+        overflow: hidden;
+        position: fixed;
+        top: -15vh;
+        right: -30vw;
+    }
+
+    .button__text {
+        position: absolute;
+        inset: 0;
+        top: 3vh;
+        animation: text-rotation 8s linear infinite;
+    }
+
+        .button__text span {
+            position: absolute;
+            transform: rotate(calc(15deg* var(--index)));
+            inset: -32px;
+            font-size: 13px;
+        }
+}
