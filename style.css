@@ -57,7 +57,7 @@ body {
 
 .abs1{
     height: 40vh;
-    width: fit-content;
+    /*width: fit-content;*/
     overflow: hidden;
     position: fixed;
     bottom: -10vh;
@@ -66,7 +66,7 @@ body {
 
 .abs2 {
     height: 40vh;
-    width: fit-content;
+    /*width: fit-content;*/
     overflow: hidden;
     position: fixed;
     top: -10vh;
@@ -75,7 +75,7 @@ body {
 
 .me {
     height: 10vh;
-    width: fit-content;
+    /*width: fit-content;*/
     overflow: hidden;
     position: fixed;
     top: 5vh;
@@ -84,7 +84,7 @@ body {
 
 .phool {
     height: 50vh;
-    width: fit-content;
+    /*width: fit-content;*/
     overflow: hidden;
     z-index: 2;
     opacity: 0;
@@ -654,7 +654,7 @@ h1 {
 
     .abs1 {
         height: 40vh;
-        width: fit-content;
+        /*width: fit-content;*/
         overflow: hidden;
         position: fixed;
         bottom: -15vh;
@@ -663,7 +663,7 @@ h1 {
 
     .abs2 {
         height: 40vh;
-        width: fit-content;
+        /*width: fit-content;*/
         overflow: hidden;
         position: fixed;
         top: -15vh;
